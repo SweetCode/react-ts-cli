@@ -1,5 +1,5 @@
 import * as React from "react";
 
-interface sHelloProps { compiler: string; framework: string; }
+interface sHlloProps { compiler: string; framework: string; }
 
-export default (props: sHelloProps) => <h1>Hello world!</h1>;
+export default (props: sHlloProps) => <h1>Hello world!</h1>;
