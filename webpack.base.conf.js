@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -23,10 +24,11 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: ['ts-loader','tslint-loader'],
                 exclude: /node_modules/
             }
-        ]
+        ],
+
     },
     resolve: {
         extensions: ['.js', '.json', '.ts', '.tsx']
@@ -35,6 +37,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin({
+            clearConsole: true
+        })
     ]
 }
